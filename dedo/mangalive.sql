@@ -41,3 +41,5 @@ create table mangas(
     foreign key(distribuidoraid) references distribuidora (id)
 );
 
+1
+
