@@ -46,3 +46,5 @@ CREATE TABLE mangas (
     FOREIGN KEY (autoresid) REFERENCES autores (id)
 );
 
+1
+
