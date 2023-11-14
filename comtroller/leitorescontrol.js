@@ -2,37 +2,37 @@ import dbknex from '../database/db_config.js'
 
 export const buscaleitores = async (req,res) =>{
     try{
-        const manga = await dbknex("leitores").select('*')
-        res.status(200).json(manga);
+        const leitor = await dbknex("leitores").select('*')
+        res.status(200).json(leitor);
 
     } catch(error){
-        req.status(500).json({message : error.message})
+        res.status(500).json({message : error.message})
     }
 }
 
 export const criarleitor = async (req,res) =>{
-     const {username,email,senha,idade} = req.body;
+     const {nome,email,senha,idade} = req.body;
 
-     if(!username || !email || !senha || !idade){
+     if(!nome || !email || !senha || !idade){
         res.status(400).json({message : "invalido" })
      }
 
      try{
 
-       const leitor = await dbknex('leitores').insert({ nome })
+       const leitor = await dbknex('leitores').insert({ nome,email,senha,idade })
        res.status(201).json(leitor)
 
      } catch(error){
-        req.status(500).json({message : error.message})
+        res.status(500).json({message : error.message})
     }
 }
 
 export const buscaleitoresid = async (req,res) => {
-    const {mangasid} = req.params;
+    const {leitoresid} = req.params;
 
     try{
-        const mangas = await dbknex('leitores').select('*').where({ id : mangasid})
-        res.status(200).json(mangas)
+        const leitor = await dbknex('leitores').select('*').where({ id : leitoresid})
+        res.status(200).json(leitor)
     }catch (error){
         res.status(500).json({message: error.message})
     }

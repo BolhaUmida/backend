@@ -6,7 +6,7 @@ export const buscadistribuidora = async (req,res) =>{
         res.status(200).json(distribuidora);
 
     } catch(error){
-        req.status(500).json({message : error.message})
+        res.status(500).json({message : error.message})
     }
 }
 
@@ -19,11 +19,11 @@ export const criardistribuidora = async (req,res) =>{
 
      try{
 
-       const distribuidora = await dbknex('distribuidora').insert({ nome })
+       const distribuidora = await dbknex('distribuidora').insert({ nome,localizacao })
        res.status(201).json(distribuidora)
 
      } catch(error){
-        req.status(500).json({message : error.message})
+        res.status(500).json({message : error.message})
     }
 }
 

@@ -6,13 +6,13 @@ export const buscageneros = async (req,res) =>{
         res.status(200).json(genero);
 
     } catch(error){
-        req.status(500).json({message : error.message})
+        res.status(500).json({message : error.message})
     }
 }
 
 export const criargeneros = async (req,res) =>{
      const {nome} = req.body;
-
+    console.log('nome');
      if(!nome){
         res.status(400).json({message : "invalido" })
      }
@@ -23,7 +23,7 @@ export const criargeneros = async (req,res) =>{
        res.status(201).json(genero)
 
      } catch(error){
-        req.status(500).json({message : error.message})
+        res.status(500).json({message : error.message})
     }
 }
 

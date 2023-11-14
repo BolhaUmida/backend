@@ -6,7 +6,7 @@ export const buscaautor = async (req,res) =>{
         res.status(200).json(autor);
 
     } catch(error){
-        req.status(500).json({message : error.message})
+        res.status(500).json({message : error.message})
     }
 }
 
@@ -19,11 +19,11 @@ export const criarautor = async (req,res) =>{
 
      try{
 
-       const autor = await dbknex('autores').insert({ nome })
+       const autor = await dbknex('autores').insert({ nome,idade,nacionalidade })
        res.status(201).json(autor)
 
      } catch(error){
-        req.status(500).json({message : error.message})
+        res.status(500).json({message : error.message})
     }
 }
 
